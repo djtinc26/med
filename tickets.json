@@ -1,0 +1,53 @@
+[
+  {
+    "id": "4467",
+    "name": "Джордан Белфорт",
+    "phone": "+998 90 123-45-67",
+    "operator": "beeline",
+    "age": 42,
+    "categoryText": "Взрослый прием",
+    "serviceId": "cardio",
+    "serviceName": "Кардиология и ЭКГ / Холтер",
+    "isStateProgram": false,
+    "priceSum": 320000,
+    "date": "2026-11-01",
+    "time": "10:30",
+    "status": "pending",
+    "createdAt": 1793471757000,
+    "notes": "Первичный прием, ЭКГ мониторинг"
+  },
+  {
+    "id": "8371",
+    "name": "Азиза Каримова",
+    "phone": "+998 93 987-65-43",
+    "operator": "ucell",
+    "age": 68,
+    "categoryText": "Пенсионер (65+)",
+    "serviceId": "mri",
+    "serviceName": "МРТ и КТ Диагностика Siemens 1.5T",
+    "isStateProgram": true,
+    "priceSum": 0,
+    "date": "2026-11-01",
+    "time": "11:45",
+    "status": "confirmed",
+    "createdAt": 1793478713000,
+    "notes": "100% бесплатно по госпрограмме QR my.gov.uz"
+  },
+  {
+    "id": "2849",
+    "name": "Рустам Ахмедов",
+    "phone": "+998 99 555-44-33",
+    "operator": "uztelecom",
+    "age": 35,
+    "categoryText": "Экстренный вызов",
+    "serviceId": "surgery",
+    "serviceName": "Малоинвазивная хирургия Karl Storz 24ч",
+    "isStateProgram": false,
+    "priceSum": 1450000,
+    "date": "2026-11-01",
+    "time": "14:00",
+    "status": "pending",
+    "createdAt": 1793479403000,
+    "notes": "Требуется консультация эндохирурга"
+  }
+]

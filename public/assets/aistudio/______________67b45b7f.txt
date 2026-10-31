@@ -1,0 +1,83 @@
+ЧАСТЬ 3: ФРОНТЕНД И ВЕРСТКА (FRONTEND & UI DEVELOPER)
+Роль фронтендера: Верстка и программирование интерфейса с точным соблюдением переданных HEX-цветов, реализация бизнес-логики, валидация, интеграция Telegram API, i18n и строгие требования к оптимизации.
+
+1. Требования к производительности и скорости сайта (Performance Requirements)
+Google PageSpeed Insights: Оценка не ниже 90+ для Mobile и 95+ для Desktop.
+
+Время первой отрисовки (FCP): Меньше 1.2 секунд.
+
+Time to Interactive (TTI): Меньше 2.0 секунд.
+
+Оптимизация ресурсов:
+
+Все шрифты (Inter/Manrope) подключаются локально в формате .woff2 с font-display: swap.
+
+Изображения в формате .webp / .svg с обязательными атрибутами loading="lazy" (кроме HERO-блока).
+
+Минифицированные CSS и JS файлы.
+
+2. Реализация Цветовой Палитры в CSS (Variables)
+Фронтендер обязан объявить единую систему переменных:
+
+CSS
+:root {
+  --bg-primary: #0B0F19;
+  --bg-secondary: #111827;
+  --bg-card: #1F2937;
+  --accent-primary: #00D2B4;
+  --accent-hover: #00B399;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --error: #EF4444;
+  --success: #10B981;
+}
+3. Функциональные модули и Frontend-логика
+3.1. Onboarding & LocalStorage Manager
+Скрипт проверяет наличие ключа nl_user_data в localStorage.
+
+Если данных нет, модалка отображается с заблокированным фоновым скроллом (overflow: hidden).
+
+При перемещении слайдера возраста (0–150):
+
+Динамически обновлять текст значения.
+
+Реактивно менять активные классы и видимость подсказок (Родитель / Commercial / Льготы 65+).
+
+Данные сохраняются в закодированном виде (Base64) при нажатии кнопки «Сохранить и продолжить».
+
+3.2. Автоопределение операторов Узбекистана и Валидация телефона
+При вводе текста в инпут телефона (+998 (XX) XXX-XX-XX):
+
+Считывать код после +998:
+
+Beeline (90, 91) ➔ Подставить URL: [https://upload.wikimedia.org/wikipedia/commons/2/22/Beeline_Uzbekistan_logo_2020.png](https://upload.wikimedia.org/wikipedia/commons/2/22/Beeline_Uzbekistan_logo_2020.png)
+
+Ucell (93, 94, 50) ➔ Подставить URL: [https://upload.wikimedia.org/wikipedia/commons/1/1f/Ucell_logo.png](https://upload.wikimedia.org/wikipedia/commons/1/1f/Ucell_logo.png)
+
+Mobiuz (97, 88, 99) ➔ Подставить URL: [https://upload.wikimedia.org/wikipedia/commons/d/d4/Mobiuz_logo.png](https://upload.wikimedia.org/wikipedia/commons/d/d4/Mobiuz_logo.png)
+
+Uztelecom (95, 98) ➔ Подставить URL: [https://upload.wikimedia.org/wikipedia/commons/e/ec/Uztelecom_logo.png](https://upload.wikimedia.org/wikipedia/commons/e/ec/Uztelecom_logo.png)
+
+Humans (33) ➔ Подставить URL: [https://upload.wikimedia.org/wikipedia/commons/5/5b/Humans_logo.png](https://upload.wikimedia.org/wikipedia/commons/5/5b/Humans_logo.png)
+
+В случае некорректного кода подсвечивать рамку цветом --error (#EF4444).
+
+3.3. Отправка формы в Telegram Bot API
+При отправке генерировать случайный 4-значный ID (Math.floor(1000 + Math.random() * 9000)).
+
+POST-запрос к [https://api.telegram.org/bot](https://api.telegram.org/bot)<TOKEN>/sendMessage с HTML-разметкой.
+
+Реализовать Rate Limiting: Блокировка кнопки отправки на 30 секунд после клика с обратным отсчетом таймера.
+
+Добавить скрытый инпут Honeypot для защиты от спам-ботов.
+
+3.4. Виджет ИИ-чата (Pollinations.ai API)
+Плавающая кнопка чата в правом нижнем углу (position: fixed; bottom: 24px; right: 24px; z-index: 999).
+
+Реализовать асинхронный fetch к [https://text.pollinations.ai/](https://text.pollinations.ai/) с системным контекстом медицинского консультанта клиники «Новые люди».
+
+3.5. Мультиязычность (i18n)
+Хранение словарей перевода в объекте const translations = { ru: {...}, uz: {...}, en: {...} }.
+
+Автоматическая замена текстов через DOM-атрибуты data-i18n="key" без перезагрузки всей страницы.
